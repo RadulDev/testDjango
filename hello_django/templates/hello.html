@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello Brototype</h1>
+    <p>Welcome to test App</p>
+
+    <!-- <h1>Title : {{title}}</h1>
+    <p>Summary : {{summary}}</p>
+    <h4>Year : {{year}}</h4>
+    {% if success %}
+    <p>Movie was successfull !!</p>
+    {% else %}
+    <p>movie was Failiure</p>
+    {% endif%} -->
+
+    {% for movie in movies %}
+    <h1>Title : {{ movie.title | upper}}</h1>
+    <p>Summary : {{movie.summary | default:'Data unavailable'}}</p>
+    <h4>Year : {{movie.year}}</h4>
+    {% if movie.success %}
+    <p>Movie was successfull !!</p>
+    {% else %}
+    <p>movie was Failiure</p>
+    {% endif%}
+    {% endfor%}
+
+</body>
+</html>

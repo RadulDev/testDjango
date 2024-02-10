@@ -1,0 +1,11 @@
+{% load static %}
+<h1> Movie Project
+    <img src="{% static 'images/bird.avif'%}">
+</h1>
+
+<ul>
+    <li><a href="{% url 'create' %}">Create</a></li>
+    <li><a href="{% url 'edit' %}">Edit</a></li>
+    <li><a href="{% url 'list' %}">List</a></li>
+</ul>
+
