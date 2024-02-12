@@ -4,16 +4,31 @@
 
 {% block content%}
 <H1>List movies</H1>
-
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Summary</th>
+        <th>Year</th>
+        <th>control</th>
+    </tr>
 {% for movie in movies %}
-    <h1>Title : {{ movie.title | upper}}</h1>
+    <!-- <h1>Title : {{ movie.title | upper}}</h1> -->
     <!-- <img src="{% static 'images/' %}{{movie.img}}" alt=""> -->
-    <p>Summary : {{movie.summary | default:'Data unavailable'}}</p>
-    <h4>Year : {{movie.year}}</h4>
+    <!-- <p>Summary : {{movie.summary | default:'Data unavailable'}}</p>
+    <h4>Year : {{movie.year}}</h4> -->
     <!-- {% if movie.success %}
     <p>Movie was successfull !!</p>
     {% else %}
     <p>movie was Failiure</p>
     {% endif%} -->
-    {% endfor%}
+
+    <tr>
+        <td><h3>{{movie.title}}</h3></td>
+        <td><p>{{movie.summary}}</p></td>
+        <td><h3>{{movie.year}}</h3></td>
+        <td><h3><a href="{% url 'edit' movie.id %}">edit</a>/<a href="{% url 'delete' movie.id %}">delete</a></h3></td>
+    </tr>
+{% endfor%}
+
+</table>
 {% endblock content%}

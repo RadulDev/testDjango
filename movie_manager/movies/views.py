@@ -7,12 +7,17 @@ from . forms import MovieForm
 def create(request):
     frm= MovieForm()
     if request.POST:
-        title = request.POST.get('title')
-        year = request.POST.get('year')
-        summary = request.POST.get('summary')
+        # title = request.POST.get('title')
+        # year = request.POST.get('year')
+        # summary = request.POST.get('summary')
+        # movie_obj = MovieInfo(title=title,year=year,summary=summary)
+        # movie_obj.save()
 
-        movie_obj = MovieInfo(title=title,year=year,summary=summary)
-        movie_obj.save()
+        frm = MovieForm(request.POST)
+        if frm.is_valid:
+            frm.save()
+        else:
+            frm=MovieForm()
 
 
     return render(request,'create.html',{'frm': frm})
@@ -58,6 +63,31 @@ def list(request):
     print(movie_data)
     return render(request,'list.html', {'movies':movie_data})
 
-def edit(request):
-    return render(request,'edit.html')
+def edit(request,pk):
 
+    edit_instance = MovieInfo.objects.get(pk=pk)
+    if request.POST:
+        # title = request.POST.get('title')
+        # year = request.POST.get('year')
+        # summary = request.POST.get('summary')
+        # edit_instance.title=title
+        # edit_instance.year=year
+        # edit_instance.summary=summary
+        # edit_instance.save()
+        frm=MovieForm(request.POST,instance=edit_instance)
+        if frm.is_valid():
+            edit_instance.save()
+    else:
+        frm = MovieForm(instance=edit_instance)
+
+    return render(request,'create.html',{'frm': frm})
+    # return render(request,'edit.html')
+
+
+def delete(request,pk):
+    del_instance = MovieInfo.objects.get(pk=pk)
+    del_instance.delete()
+
+    movie_data = MovieInfo.objects.all()
+    print(movie_data)
+    return render(request,'list.html', {'movies':movie_data})
