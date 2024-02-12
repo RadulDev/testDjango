@@ -7,13 +7,13 @@
 
 {% for movie in movies %}
     <h1>Title : {{ movie.title | upper}}</h1>
-    <img src="{% static 'images/' %}{{movie.img}}" alt="">
+    <!-- <img src="{% static 'images/' %}{{movie.img}}" alt=""> -->
     <p>Summary : {{movie.summary | default:'Data unavailable'}}</p>
     <h4>Year : {{movie.year}}</h4>
-    {% if movie.success %}
+    <!-- {% if movie.success %}
     <p>Movie was successfull !!</p>
     {% else %}
     <p>movie was Failiure</p>
-    {% endif%}
+    {% endif%} -->
     {% endfor%}
 {% endblock content%}
