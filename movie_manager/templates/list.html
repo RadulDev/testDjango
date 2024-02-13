@@ -9,6 +9,7 @@
         <th>Title</th>
         <th>Summary</th>
         <th>Year</th>
+        <th>Images</th>
         <th>control</th>
     </tr>
 {% for movie in movies %}
@@ -26,6 +27,7 @@
         <td><h3>{{movie.title}}</h3></td>
         <td><p>{{movie.summary}}</p></td>
         <td><h3>{{movie.year}}</h3></td>
+        <td><img src="{{.url}}" alt=""  style="width: 40px; "></td>
         <td><h3><a href="{% url 'edit' movie.id %}">edit</a>/<a href="{% url 'delete' movie.id %}">delete</a></h3></td>
     </tr>
 {% endfor%}
