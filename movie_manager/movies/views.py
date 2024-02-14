@@ -60,7 +60,8 @@ def list(request):
     # }
     # return render(request,'list.html',movie_details)
     movie_data = MovieInfo.objects.all()
-    print(movie_data)
+    # print( movie_data)
+    for i in movie_data:print(i.poster)
     return render(request,'list.html', {'movies':movie_data})
 
 def edit(request,pk):
