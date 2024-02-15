@@ -3,13 +3,20 @@
 {% load static %}
 
 {% block content%}
-<H1>List movies</H1>
+
+{% for movieset in recent_movie%}
+    <p>{{movieset.title}}</p>
+{% endfor%}
+<H1>List movies {{ visits}} times visted</H1>
 <table>
     <tr>
         <th>Title</th>
         <th>Summary</th>
         <th>Year</th>
         <th>Images</th>
+        <th>Director</th>
+        <th>Actors</th>
+        <th>Censor cert</th>
         <th>control</th>
     </tr>
 {% for movie in movies %}
@@ -28,7 +35,11 @@
         <td><p>{{movie.summary}}</p></td>
         <td><h3>{{movie.year}}</h3></td>
         <td><img src="{{movie.poster.url}}" alt=""  style="width: 80px; "></td>
+        <td><h3>{{movie.director}}</h3></td>
+        <td><h3>{{movie.actor}}</h3></td>
+        <td><h3>{{movie.censor_details}}</h3></td>
         <td><h3><a href="{% url 'edit' movie.id %}">edit</a>/<a href="{% url 'delete' movie.id %}">delete</a></h3></td>
+        
     </tr>
 {% endfor%}
 
